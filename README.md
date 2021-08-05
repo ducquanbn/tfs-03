@@ -1,3 +1,5 @@
 # tfs-03
-Full name: Nguyen Duc Quan
-Class: TFS-02
+
+|     Fullname    |    Class     |
+|-----------------|--------------|
+| Nguyen Duc Quan |   TFS - 03   |
