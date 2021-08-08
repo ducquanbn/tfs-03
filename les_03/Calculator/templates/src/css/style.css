@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#cal{
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 400px;
+    width: 300px;
+    padding: 20px 20px;
+    background-color:rgb(230, 236, 238);
+}
+#display{
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    text-align: right;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.numberAll{
+    margin-top: 20px;
+    border: 1px solid black;
+    width: 94%;
+    height: 300px;
+    padding: 10px 10px;
+    background-color: white;
+}
+.number{
+    width: 20%;
+    height: 15%;
+    border: 1px solid wheat;
+    border-radius: 20px;
+    margin: 7px 5px;
+    background-color:wheat;
+}
+.number:hover {
+    cursor: pointer;
+    opacity: 0.5
+}

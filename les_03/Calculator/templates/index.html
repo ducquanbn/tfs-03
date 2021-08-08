@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/css/style.css" />
+    <title>Calculator</title>
+</head>
+<body>
+    <h1 style="text-align: center;">CALCULATOR</h1>
+    <div id="cal">
+        <input id="display" type="text" value="0" disabled>
+        <div class="numberAll">
+            <input onclick="cal(1)" id="num1" class="number" type="button" value="1">
+            <input onclick="cal(2)" id="num2" class="number" type="button" value="2">
+            <input onclick="cal(3)" id="num3" class="number" type="button" value="3">
+            <input onclick="cal('+')" id="cong" class="number" type="button" value="+">
+            <input onclick="cal(4)" id="num4" class="number" type="button" value="4">
+            <input onclick="cal(5)" id="num5" class="number" type="button" value="5">
+            <input onclick="cal(6)" id="num6" class="number" type="button" value="6">
+            <input onclick="cal('-')" id="tru" class="number" type="button" value="-">
+            <input onclick="cal(7)" id="num7" class="number" type="button" value="7">
+            <input onclick="cal(8)" id="num8" class="number" type="button" value="8">
+            <input onclick="cal(9)" id="num9" class="number" type="button" value="9">
+            <input onclick="cal('*')" id="nhan" class="number" type="button" value="*">
+            <input onclick="cal(0)" id="num0" class="number" type="button" value="0">
+            <input id="calcul" class="number" type="button" value="=">
+            <input onclick="cal('.')" id="dot" class="number" type="button" value="." style="font-weight: bolder;">
+            <input onclick="cal('/')" id="chia" class="number" type="button" value="/">
+            <input class="number" type="button" value="sin">
+            <input class="number" type="button" value="cos">
+            <input class="number" type="button" value="tan">
+            <input id="del" class="number" type="button" value="del">
+        </div>
+    </div>
+    
+    <script src="src/js/script.js"></script>
+</body>
+</html>
