@@ -10,7 +10,7 @@ import (
 
 func DBConnect() *gorm.DB {
 
-	db, err := gorm.Open(mysql.Open("root:123456@tcp(127.0.0.1:3306)/film"))
+	db, err := gorm.Open(mysql.Open("root:123456@tcp(localhost:3306)/film"))
 	if err != nil {
 		fmt.Println(err.Error())
 	}
