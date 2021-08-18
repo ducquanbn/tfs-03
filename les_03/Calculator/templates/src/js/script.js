@@ -21,7 +21,13 @@ document.getElementById("calcul").addEventListener("click", () => {
         },
         body: dataReq,
     })
-    .then(response => response.json())
+    .then(resp => {
+        if (resp.status === 200) {
+            return resp.json()
+        } else {
+            return Promise.reject("Res Erro !")
+        }
+    })
     .then(data => {
         document.getElementById("display").value = data.exprestion;
         console.log('Success:', data);

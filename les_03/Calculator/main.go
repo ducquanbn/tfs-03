@@ -10,20 +10,17 @@ import (
 )
 
 type Exps struct {
-	expression string
+	Expression string `json:"expression"`
 }
 
 func cal(w http.ResponseWriter, r *http.Request) {
-	var exp Exps
-	decoder := json.NewDecoder(r.Body)
-	err := decoder.Decode(&exp)
-	if err != nil {
-		http.Error(w, "BAD REQUEST", http.StatusBadRequest)
+	exp := Exps{}
+	if err := json.NewDecoder(r.Body).Decode(&exp); err != nil {
+		fmt.Fprint(w, "Error")
 		return
 	}
-	
-	fmt.Println(exp.expression ) //Khong ra Data cua Res
-	result := Exps{expression: exp.expression}
+	fmt.Println(exp.Expression) //Khong ra Data cua Res
+	result := Exps{Expression: exp.Expression}
 	encoder := json.NewEncoder(w)
 	encoder.Encode(result)
 
