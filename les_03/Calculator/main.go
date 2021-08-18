@@ -14,16 +14,17 @@ type Exps struct {
 }
 
 func cal(w http.ResponseWriter, r *http.Request) {
-	var exps Exps
+	var exp Exps
 	decoder := json.NewDecoder(r.Body)
-	err := decoder.Decode(&exps)
+	err := decoder.Decode(&exp)
 	if err != nil {
 		http.Error(w, "BAD REQUEST", http.StatusBadRequest)
 		return
 	}
+	
+	fmt.Println(exp.expression ) //Khong ra Data cua Res
+	result := Exps{expression: exp.expression}
 	encoder := json.NewEncoder(w)
-	fmt.Println(exps.expression + "asdas") //Khong ra Data cua Res
-	result := Exps{expression: "123"}
 	encoder.Encode(result)
 
 }
