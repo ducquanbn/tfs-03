@@ -11,15 +11,14 @@ cal = (val) => {
     }
 }
 
-
 document.getElementById("calcul").addEventListener("click", () => {
-    let dataReq=JSON.stringify({"exprestion": display.value})
+    let dataReq= display.value
     fetch('http://localhost:8080/cal', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: dataReq,
+        body: JSON.stringify(dataReq),
     })
     .then(resp => {
         if (resp.status === 200) {
@@ -29,7 +28,7 @@ document.getElementById("calcul").addEventListener("click", () => {
         }
     })
     .then(data => {
-        document.getElementById("display").value = data.exprestion;
+        document.getElementById("display").value = data;
         console.log('Success:', data);
     })
     .catch((error) => {

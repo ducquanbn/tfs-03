@@ -5,24 +5,73 @@ import (
 	"fmt"
 	"html/template"
 	"net/http"
+	"strconv"
+	"strings"
 
 	"github.com/gorilla/mux"
 )
 
-type Exps struct {
-	Expression string `json:"expression"`
+func Exc(exps string) float64 {
+	data := strings.Split(exps, "")
+	result, _ := strconv.ParseFloat(data[0], 64)
+	var resultA, resultB string
+	var str string
+	for i := range data {
+		check := true
+		if check {
+			if data[i] != "+" || data[i] != "-" || data[i] != "*" || data[i] != "/" {
+				resultA += data[i]
+			} else {
+				switch data[i] {
+				case "+":
+					str = "+"
+					check = false
+				case "-":
+					str = "-"
+					check = false
+				case "*":
+					str = "*"
+					check = false
+				case "/":
+					str = "/"
+					check = false
+				}
+			}
+
+		} else {
+			resultB += data[i]
+		}
+	}
+	rs1, _ := strconv.ParseFloat(resultA, 8)
+	rs2, _ := strconv.ParseFloat(resultB, 8)
+	switch str {
+	case "+":
+		result = rs1 + rs2
+	case "-":
+		result = rs1 - rs2
+	case "*":
+		result = rs1 * rs2
+	case "/":
+		if rs2 == 0 {
+			result = 0
+		} else {
+			result = rs1 / rs2
+		}
+
+	}
+	return result
 }
 
 func cal(w http.ResponseWriter, r *http.Request) {
-	exp := Exps{}
-	if err := json.NewDecoder(r.Body).Decode(&exp); err != nil {
-		fmt.Fprint(w, "Error")
+	var exps string
+	err := json.NewDecoder(r.Body).Decode(&exps)
+	if err != nil {
+		http.Error(w, "BAD REQUEST", http.StatusBadRequest)
 		return
 	}
-	fmt.Println(exp.Expression) //Khong ra Data cua Res
-	result := Exps{Expression: exp.Expression}
-	encoder := json.NewEncoder(w)
-	encoder.Encode(result)
+	fmt.Println(exps)
+	result := Exc(exps)
+	json.NewEncoder(w).Encode(result)
 
 }
 
